@@ -106,6 +106,8 @@
                       protobuf-java directly, you will be transitively depending on the
                       protobuf-java version that grpc depends on.
                     -->
+<!--                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>-->
+<!--                    <outputDirectory>${project.basedir}/src/main/java/protojava</outputDirectory>-->
                     <protocArtifact>
                         com.google.protobuf:protoc:${com.google.protobuf.protoc.version}:exe:${os.detected.classifier}
                     </protocArtifact>

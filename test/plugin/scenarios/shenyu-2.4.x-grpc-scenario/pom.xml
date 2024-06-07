@@ -45,7 +45,7 @@
 
         <grpc.version>1.33.1</grpc.version>
         <protobuf.version>3.13.0</protobuf.version>
-        <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
+        <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
 
         <!--just for test-->
         <fastjson.version>1.2.79</fastjson.version>

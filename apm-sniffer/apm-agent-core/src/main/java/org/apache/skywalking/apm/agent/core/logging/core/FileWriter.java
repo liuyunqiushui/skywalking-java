@@ -118,34 +118,22 @@ public class FileWriter implements IWriter {
 
     private void switchFile() {
         if (fileSize > Config.Logging.MAX_FILE_SIZE) {
-            forceExecute(new Callable() {
-                @Override
-                public Object call() throws Exception {
-                    fileOutputStream.flush();
-                    return null;
-                }
+            forceExecute(() -> {
+                fileOutputStream.flush();
+                return null;
             });
-            forceExecute(new Callable() {
-                @Override
-                public Object call() throws Exception {
-                    fileOutputStream.close();
-                    return null;
-                }
+            forceExecute(() -> {
+                fileOutputStream.close();
+                return null;
             });
-            forceExecute(new Callable() {
-                @Override
-                public Object call() throws Exception {
-                    new File(Config.Logging.DIR, Config.Logging.FILE_NAME).renameTo(new File(Config.Logging.DIR, Config.Logging.FILE_NAME + new SimpleDateFormat(".yyyy_MM_dd_HH_mm_ss")
-                        .format(new Date())));
-                    return null;
-                }
+            forceExecute(() -> {
+                new File(Config.Logging.DIR, Config.Logging.FILE_NAME).renameTo(new File(Config.Logging.DIR, Config.Logging.FILE_NAME + new SimpleDateFormat(".yyyy_MM_dd_HH_mm_ss")
+                    .format(new Date())));
+                return null;
             });
-            forceExecute(new Callable() {
-                @Override
-                public Object call() throws Exception {
-                    fileOutputStream = null;
-                    return null;
-                }
+            forceExecute(() -> {
+                fileOutputStream = null;
+                return null;
             });
 
             if (Config.Logging.MAX_HISTORY_FILES > 0) {

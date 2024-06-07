@@ -90,7 +90,7 @@
         <grpc.version>1.53.0</grpc.version>
         <netty.version>4.1.100.Final</netty.version>
         <gson.version>2.8.9</gson.version>
-        <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
+        <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
         <com.google.protobuf.protoc.version>3.21.7</com.google.protobuf.protoc.version>
         <protoc-gen-grpc-java.plugin.version>1.53.0</protoc-gen-grpc-java.plugin.version>
@@ -103,7 +103,7 @@
         <!-- Plugin versions -->
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <takari-maven-plugin.version>0.6.1</takari-maven-plugin.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
@@ -388,16 +388,18 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
+                    <!--suppress UnresolvedMavenProperty -->
                     <configLocation>${maven.multiModuleProjectDirectory}/apm-checkstyle/checkStyle.xml</configLocation>
+                    <!--suppress UnresolvedMavenProperty -->
                     <headerLocation>${maven.multiModuleProjectDirectory}/apm-checkstyle/CHECKSTYLE_HEAD</headerLocation>
-                    <encoding>UTF-8</encoding>
+<!--                    <encoding>UTF-8</encoding>-->
                     <consoleOutput>true</consoleOutput>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <failOnViolation>${checkstyle.fails.on.error}</failOnViolation>
                     <sourceDirectories>
                         <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                         <sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
-<sourceDirectory>scenarios/resttemplate-6.x-scenario</sourceDirectory>
+                        <sourceDirectory>scenarios/resttemplate-6.x-scenario</sourceDirectory>
                     </sourceDirectories>
                     <resourceIncludes>
                         **/*.properties,

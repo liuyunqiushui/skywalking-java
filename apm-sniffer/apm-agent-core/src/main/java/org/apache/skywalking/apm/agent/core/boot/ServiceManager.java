@@ -36,7 +36,7 @@ public enum ServiceManager {
     INSTANCE;
 
     private static final ILog LOGGER = LogManager.getLogger(ServiceManager.class);
-    private Map<Class, BootService> bootedServices = Collections.emptyMap();
+    private Map<Class<?>, BootService> bootedServices = Collections.emptyMap();
 
     public void boot() {
         bootedServices = loadAllServices();
@@ -56,11 +56,14 @@ public enum ServiceManager {
         });
     }
 
-    private Map<Class, BootService> loadAllServices() {
-        Map<Class, BootService> bootedServices = new LinkedHashMap<>();
+    private Map<Class<?>, BootService> loadAllServices() {
+        Map<Class<?>, BootService> bootedServices = new LinkedHashMap<>();
         List<BootService> allServices = new LinkedList<>();
         load(allServices);
         for (final BootService bootService : allServices) {
+            /*
+
+             */
             Class<? extends BootService> bootServiceClass = bootService.getClass();
             boolean isDefaultImplementor = bootServiceClass.isAnnotationPresent(DefaultImplementor.class);
             if (isDefaultImplementor) {
